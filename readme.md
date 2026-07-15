@@ -1,6 +1,6 @@
 
 Template OS for helping to build custom OS.\
-It's customize and copy from Hydra-os.
+It's customize and copy from [Hydra-os](https://github.com/MultiX0/hydra-os).
 
 
 run:\
