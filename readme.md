@@ -6,11 +6,11 @@ It's customize and copy from Hydra-os.
 run:\
 make run
 
-- files:\
+- files:
    - iso/boot/: 
-           - kernel.elf,
-           - grub/menu.lst 
-           - stage2_eltorito
+        - kernel.elf
+        - grub/menu.lst 
+        - stage2_eltorito
    - gdt(.c,.h,.s)
    - idt(.c,.h,.s)
    - io(.h,.s)
