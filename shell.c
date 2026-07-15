@@ -2,7 +2,6 @@
 #include "fb.h"
 #include "keyboard.h"
 #include "serial.h"
-#include "snake.h"
 
 #define COMMAND_BUFFER_SIZE 256
 
@@ -43,7 +42,7 @@ void shell_help_command(void)
     fb_puts("  clear - Clear the screen\n");
     fb_puts("  echo  - Echo back your text\n");
     fb_puts("  about - Display OS information\n");
-    fb_puts("  play  - Play Snake game!\n");
+    //fb_puts("  play  - Play Snake game!\n");
 }
 
 /** shell_echo_command:
@@ -78,7 +77,7 @@ void shell_about_command(void)
  */
 void shell_play_command(void)
 {
-    snake_game();
+    //snake_game();
     /* After game ends, redraw shell */
     fb_clear();
     fb_puts("Welcome back to Hydra OS!\n");
@@ -122,9 +121,11 @@ void shell_execute_command(void)
         shell_echo_command(args);
     } else if (strcmp(cmd, "about") == 0) {
         shell_about_command();
-    } else if (strcmp(cmd, "play") == 0) {
+    }
+    /* else if (strcmp(cmd, "play") == 0) {
         shell_play_command();
-    } else {
+    }*/
+    else {
         fb_puts("Unknown command: ");
         fb_puts(cmd);
         fb_puts("\nType 'help' for available commands.\n");

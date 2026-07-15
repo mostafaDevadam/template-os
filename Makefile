@@ -24,8 +24,8 @@ hydra.iso: kernel.elf
 	            -o hydra.iso \
 	            iso
 
-run: hydra.iso
-	bochs -f bochsrc.txt -q
+run: clean hydra.iso
+	qemu-system-i386 -cdrom hydra.iso
 
 gdt_s.o: gdt_asm.s
 	$(AS) $(ASFLAGS) $< -o $@
@@ -38,6 +38,7 @@ idt_s.o: idt_asm.s
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
+
 
 clean:
 	rm -rf *.o kernel.elf hydra.iso
