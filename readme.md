@@ -3,6 +3,9 @@ Template OS for helping to build custom OS
 It's customize and copy from Hydra-os.
 
 
+run:
+make run
+
 files:
 iso/boot/: kernel.elf, grub/menu.lst, stage2_eltorito
 gdt(.c,.h,.s)
