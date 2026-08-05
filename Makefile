@@ -10,15 +10,15 @@ LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
 BUILD_DIR = build
+BOOT = iso/boot
 
+all: clean $(BUILD_DIR) $(BOOT)/kernel.elf
 
-all: clean $(BUILD_DIR) kernel.elf
+$(BOOT)/kernel.elf: $(OBJECTS)
+	ld $(LDFLAGS) $(OBJECTS) -o $(BOOT)/kernel.elf
 
-kernel.elf: $(OBJECTS)
-	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
-
-hydra.iso: kernel.elf
-	cp kernel.elf iso/boot/kernel.elf
+hydra.iso: $(BOOT)/kernel.elf
+	#cp kernel.elf iso/boot/kernel.elf
 	#xorriso -as mkisofs -R \
 	genisoimage -R \
 	            -b boot/grub/stage2_eltorito \
@@ -50,4 +50,4 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 clean:
-	rm -rf *.o kernel.elf hydra.iso $(BUILD_DIR)
+	rm -rf *.o $(BOOT)/kernel.elf hydra.iso $(BUILD_DIR)
